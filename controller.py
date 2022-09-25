@@ -20,6 +20,7 @@ GPIO.setup(restart_pin, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 def Shutdown(channel):
    for x in range(2):
+      # Blinks the LED twice
       GPIO.output(led_pin,GPIO.HIGH)
       time.sleep(blink_time)
       GPIO.output(led_pin,GPIO.LOW)
@@ -29,6 +30,7 @@ def Shutdown(channel):
 
 def Restart(channel):
    for x in range(3):
+      # Blinks the LED three times
       GPIO.output(led_pin,GPIO.HIGH)
       time.sleep(blink_time)
       GPIO.output(led_pin,GPIO.LOW)
