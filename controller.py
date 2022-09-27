@@ -26,6 +26,7 @@ def Shutdown(channel):
       GPIO.output(led_pin,GPIO.LOW)
       time.sleep(blink_time)
    time.sleep(1)
+   os.system("date | tr '\n' '\t' >> /home/pi/log.txt && echo 'Shutting down' >> /home/pi/log.txt")
    os.system("sudo poweroff")
 
 def Restart(channel):
@@ -36,6 +37,7 @@ def Restart(channel):
       GPIO.output(led_pin,GPIO.LOW)
       time.sleep(blink_time)
    time.sleep(1)
+   os.system("date | tr '\n' '\t' >> /home/pi/log.txt && echo 'Restarting' >> /home/pi/log.txt")
    os.system("sudo reboot")
 
 # Add our function to execute when a button is pressed.
