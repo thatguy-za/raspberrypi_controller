@@ -1,14 +1,12 @@
-#This script uses the gpiozero library to shut down a pi. Depending on your distro, you might need to run the poweroff command as sudo.
 from gpiozero import Button
-import time
-import os
+from signal import pause
 
 # The pi will shutdown when pin 21 is connected to ground
-shutdown_button_pin = Button(21, pull_up=True)
+shutdown_button_pin = Button(21, hold_time=2)
 
-while True:
-     if shutdown_button_pin.is_pressed:
-        time.sleep(2)
-        # wbutton must be pressed for 2 seconds
-        if shutdown_button_pin.is_pressed:
-            os.system("poweroff")
+def shutdown():
+    check_call(['poweroff'])
+
+shutdown_button_pin.when_held = shutdown
+
+pause()
